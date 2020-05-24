@@ -1,0 +1,20 @@
+{% extends "taskApp/base.html" %}
+{% load static %}
+{% block body_block %}
+<div class="jumbotron">
+  {% if added %}
+        <h3>Task Added!</h3>
+        <a href="{% url 'taskApp:myTask' %}">return to home</a>
+  {% else %}
+    <h3>Add the task:</h3>
+
+    <form  enctype="multipart/form-data"  method="post">
+      {% csrf_token %}
+      {{ task_form.as_p }}
+      <input type="submit" name="" value="add">
+    </form>
+  {% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "taskApp/base.html" %}
+{% load static %}
+{% block body_block %}
+
+<div class="jumbotron">
+  <h2>Welcome {{ user }}</h2>
+
+  {% if task_obj %}
+      <p><em>To mark a task as completed , tick the checkbox corresponding to the task and hit the button !</em></p>
+      <table>
+          <thead>
+              <th>Label</th>
+              <th>Due Date</th>
+              <th>Status</th>
+          </thead>
+          {% for t in task_obj %}
+            <tr>
+                <td>{{ t.label }}</td>
+                <td>{{ t.date }}</td>
+                <!-- <td>{{ t.status }}</td>  -->
+                {% if t.status == True %}
+                  <td>{{ t.status }}</td>
+                {% else %}
+
+                    <td><form action="{%  url 'taskApp:toggle' %}" method="post">
+                      {% csrf_token %}
+                      <input type="checkbox" id="checkbox" name="status" value="{{t.id}}">
+                      <input type="submit"  value="Mark as complete">
+                    </form></td>
+                {% endif %}
+
+            </tr>
+          {% endfor %}
+      </table>
+
+  {% else %}
+      <p>NO TASKS FOUND</p>
+  {% endif %}
+
+</div>
+
+
+{% endblock %}
