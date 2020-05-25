@@ -14,12 +14,17 @@ def index(request):
 @login_required
 def toggle(request):
     task_obj=UserTask.objects.filter(author=request.user)
+    msg=False
+    if(request.POST.get('status',False)==False):
+        msg=True
+        return render(request,'taskApp/task.html',{'task_obj':task_obj,'msg':msg})
+
     if request.method=='POST':
         val=request.POST.get('status',None)
         t = UserTask.objects.get(id=val)
         t.status = True
         t.save()
-    return render(request,'taskApp/task.html',{'task_obj':task_obj})
+    return render(request,'taskApp/task.html',{'task_obj':task_obj,'msg':msg})
 
 @login_required
 def add_task(request):

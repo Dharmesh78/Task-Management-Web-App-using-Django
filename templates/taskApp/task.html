@@ -6,32 +6,54 @@
   <h2>Welcome {{ user }}</h2>
 
   {% if task_obj %}
+      {% if msg %}
+        <script type="text/javascript">
+          alert("tick mark the status of the task and then click on \"Mark as completed\"");
+        </script>
+      {% endif %}
       <p><em>To mark a task as completed , tick the checkbox corresponding to the task and hit the button !</em></p>
-      <table>
+      <br>
+      <table class="table table-bordered">
           <thead>
               <th>Label</th>
               <th>Due Date</th>
               <th>Status</th>
           </thead>
           {% for t in task_obj %}
+            {% if t.status == False %}
             <tr>
                 <td>{{ t.label }}</td>
                 <td>{{ t.date }}</td>
-                <!-- <td>{{ t.status }}</td>  -->
-                {% if t.status == True %}
-                  <td>{{ t.status }}</td>
-                {% else %}
-
-                    <td><form action="{%  url 'taskApp:toggle' %}" method="post">
+                <td><form action="{%  url 'taskApp:toggle' %}" method="post">
                       {% csrf_token %}
                       <input type="checkbox" id="checkbox" name="status" value="{{t.id}}">
                       <input type="submit"  value="Mark as complete">
                     </form></td>
-                {% endif %}
-
             </tr>
+            {% endif %}
+
           {% endfor %}
       </table>
+      <br><br>
+      <h3>Archieved tasks</h3>
+      <br>
+      <table class="table table-bordered">
+          <thead>
+              <th>Label</th>
+              <th>Due Date</th>
+              <th>Status</th>
+          </thead>
+          {% for t in task_obj %}
+            {% if t.status == True %}
+              <tr>
+                <td>{{ t.label }}</td>
+                <td>{{ t.date }}</td>
+                <td>completed</td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+      </table>
+
 
   {% else %}
       <p>NO TASKS FOUND</p>
