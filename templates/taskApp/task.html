@@ -6,11 +6,18 @@
   <h2>Welcome {{ user }}</h2>
 
   {% if task_obj %}
+      {% if added %}
+      <div class="alert alert-success">
+        <h3>Task successfully added!</h3>
+      </div>
+      {% endif %}
+
       {% if msg %}
         <script type="text/javascript">
           alert("tick mark the status of the task and then click on \"Mark as completed\"");
         </script>
       {% endif %}
+
       <p><em>To mark a task as completed , tick the checkbox corresponding to the task and hit the button !</em></p>
       <br>
       <table class="table table-bordered">

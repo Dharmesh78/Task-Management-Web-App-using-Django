@@ -18,6 +18,7 @@
           {% if user.is_authenticated %}
             <li><a class="navbar-link" href="{% url 'taskApp:myTask' %}">My Tasks</a></li>
             <li><a class="navbar-link" href="{% url 'taskApp:addTask' %}">Add Task</a></li>
+            <!-- <li><button type="button" class="btn btn-success">Success</button></li> -->
             <li><a class="navbar-link" href="{% url 'logout' %}">Logout</a></li>
 
           {% else %}

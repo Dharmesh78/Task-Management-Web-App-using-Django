@@ -39,6 +39,8 @@ def add_task(request):
             task.author=request.user
             task.save()
             added=True
+            task_obj=UserTask.objects.filter(author=request.user)
+            return render(request,'taskApp/task.html',{'task_obj':task_obj,'added':added})
 
         else:
             print(task_form.errors)
