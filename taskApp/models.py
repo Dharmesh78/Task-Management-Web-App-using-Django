@@ -13,7 +13,7 @@ class UserCustom(models.Model):
 
 class UserTask(models.Model):
     author = models.ForeignKey(User,on_delete=models.CASCADE)
-    label=models.CharField(max_length=264,unique=True)
+    label=models.CharField(max_length=264)
     date=models.DateField()
     status=models.BooleanField(default=False)
 
