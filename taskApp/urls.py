@@ -9,4 +9,5 @@ urlpatterns=[
     path('addTaskHandle/',views.add_task,name='addTask'),
     path('myTasks/',views.my_task,name='myTask'),
     path('toggle/', views.toggle,name='toggle'),
+    path('editTask/<task_id>',views.edit,name='edit'),
 ]

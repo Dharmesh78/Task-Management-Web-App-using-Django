@@ -12,6 +12,12 @@
       </div>
       {% endif %}
 
+      {% if edited %}
+      <div class="alert alert-success">
+        <h3>Task successfully Edited!</h3>
+      </div>
+      {% endif %}
+
       {% if msg %}
         <script type="text/javascript">
           alert("tick mark the status of the task and then click on \"Mark as completed\"");
@@ -29,7 +35,7 @@
           {% for t in task_obj %}
             {% if t.status == False %}
             <tr>
-                <td>{{ t.label }}</td>
+                <td><a href="{% url 'taskApp:edit' t.id %}">{{ t.label }}</a></td>
                 <td>{{ t.date }}</td>
                 <td><form action="{%  url 'taskApp:toggle' %}" method="post">
                       {% csrf_token %}

@@ -26,6 +26,27 @@ def toggle(request):
         t.save()
     return render(request,'taskApp/task.html',{'task_obj':task_obj,'msg':msg})
 
+
+@login_required
+def edit(request,task_id):
+    item = UserTask.objects.get(pk=task_id)
+    edited=False
+    if request.method=="POST":
+        task_form=UserTaskForm(data=request.POST,instance=item)
+        if task_form.is_valid():
+            edited=True
+            task_form.save()
+            print("SUCCESS")#messages.success(request, ('Item Has Been Edited!'))
+            task_obj=UserTask.objects.filter(author=request.user)
+            return render(request,'taskApp/task.html',{'task_obj':task_obj,'edited':edited})
+        else:
+            print(task_form.errors)
+    else:
+        task_form=UserTaskForm()
+
+    return render(request,'taskApp/edit.html',{'task_form':task_form})
+
+
 @login_required
 def add_task(request):
     added=False

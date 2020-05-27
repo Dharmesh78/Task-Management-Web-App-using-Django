@@ -1,0 +1,15 @@
+{% extends "taskApp/base.html" %}
+{% load static %}
+{% block body_block %}
+<div class="jumbotron">
+    <h3>Edit the task:</h3>
+
+    <form  enctype="multipart/form-data"  method="post">
+      {% csrf_token %}
+      {{ task_form.as_p }}
+      <input type="submit" name="" value="save">
+    </form>
+
+
+</div>
+{% endblock %}
