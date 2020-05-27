@@ -1,0 +1,29 @@
+a:link{
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+body{
+     background: url("/static/images/bgimg.png") 50% 0 no-repeat fixed;
+     color: black;
+     height: 650px;
+     padding: 0 0 0 0;
+}
+.jumbotron {
+  /*background-color: #3399ff; /* Blue */
+  /* color: #ffffff; */
+  /*background: rgba(200, 54, 54, 0.5);*/
+  background: rgba(255,255,0,0.5);
+}
+th,h1,h2,h3,h4{
+  text-align: center;
+}
+form {
+    width: 300px;
+    margin: 0 auto;
+}

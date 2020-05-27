@@ -2,7 +2,7 @@
 {% load static %}
 {% block body_block %}
 
-<div class="jumbotron">
+<div class="jumbotron text-center">
   <h2>Welcome {{ user }}</h2>
 
   {% if task_obj %}
@@ -23,10 +23,10 @@
           alert("tick mark the status of the task and then click on \"Mark as completed\"");
         </script>
       {% endif %}
-
       <p><em>To mark a task as completed , tick the checkbox corresponding to the task and hit the button !</em></p>
+      <p><em>To edit a task, click on the corresponding label </em></p>
       <br>
-      <table class="table table-bordered">
+      <table class="table table-hover">
           <thead>
               <th>Label</th>
               <th>Due Date</th>
@@ -40,7 +40,8 @@
                 <td><form action="{%  url 'taskApp:toggle' %}" method="post">
                       {% csrf_token %}
                       <input type="checkbox" id="checkbox" name="status" value="{{t.id}}">
-                      <input type="submit"  value="Mark as complete">
+                      <button type="submit" value="Mark as complete" class="btn btn-success">Mark as complete!!</button>
+                      <!-- <input type="submit"  value="Mark as complete"> -->
                     </form></td>
             </tr>
             {% endif %}

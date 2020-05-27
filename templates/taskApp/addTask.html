@@ -11,7 +11,7 @@
     <form  enctype="multipart/form-data"  method="post">
       {% csrf_token %}
       {{ task_form.as_p }}
-      <input type="submit" name="" value="add">
+      <button type="submit" value="add" class="btn btn-success">ADD!!</button>
     </form>
   {% endif %}
 

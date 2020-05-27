@@ -3,19 +3,24 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}" >
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script> -->
+    
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-static-top">
-      <div class="container-fluid">
+      <div class="container">
 
         <ul class="nav navbar-nav">
-          <li><a class="navbar-brand" href="{% url 'index' %}"><img src={% static "images/1567073.png" %} width="60" height="50" alt="TASK_TO_DO"></a></li>
+          <li><a class="navbar-brand" href="{% url 'index' %}"><em>ToDoList</em><img src={% static "images/1567073.png" %} width="60" height="50" alt="TASK_TO_DO"></a></li>
           <!-- <li><a class="navbar-brand" href="{% url 'index' %}">Task to do</a></li> -->
           <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
+        </ul>
 
+        <ul class="nav navbar-nav">
           {% if user.is_authenticated %}
             <li><a class="navbar-link" href="{% url 'taskApp:myTask' %}">My Tasks</a></li>
             <li><a class="navbar-link" href="{% url 'taskApp:addTask' %}">Add Task</a></li>
@@ -23,16 +28,16 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-            <li><a class="navbar-link" href="#"> {{user}} <span class="glyphicon glyphicon-user"></span></a></li>
-            <li><a class="navbar-link" href="{% url 'logout' %}">Logout</a></li>
-
-
-          {% else %}
+              <li><a class="navbar-link" href="#"> {{user}} <span class="glyphicon glyphicon-user"></span></a></li>
+              <li><a class="navbar-link" href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+        {% else %}
             <li><a class="navbar-link" href="{% url 'taskApp:register' %}">Register</a></li>
             <li><a class="navbar-link" href="{% url 'taskApp:user_login' %}">Login</a></li>
-
-          {% endif %}
+        {% endif %}
         </ul>
+
 
       </div>
 

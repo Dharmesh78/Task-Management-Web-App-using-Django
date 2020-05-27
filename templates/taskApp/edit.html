@@ -7,7 +7,8 @@
     <form  enctype="multipart/form-data"  method="post">
       {% csrf_token %}
       {{ task_form.as_p }}
-      <input type="submit" name="" value="save">
+      <!-- <input type="submit" name="" value="save"> -->
+      <button type="submit" value="save" class="btn btn-success">Save!!</button>
     </form>
 
 
