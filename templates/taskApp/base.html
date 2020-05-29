@@ -6,12 +6,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" href="{% static 'css/mystyle.css' %}" >
+    <style media="screen">
+         p{
+           text-align: center;
+           color: black;
+         }
+
+         footer{
+               padding: 0px 0px 0px 0px;
+               background-color: rgba(255,255,0,0.5);
+               margin: 0px;
+          }
+
+         #ftr{
+           padding: 20px;
+         }
+
+         .fa{
+               font-size: 23px;
+               width: 60px;
+               text-align: center;
+               text-decoration: none;
+               margin: 5px 2px;
+               border-radius: 50%;
+         }
+         .fa:hover{
+               opacity: 0.5;
+               text-decoration: none;
+             }
+         .fa-facebook{
+               background: #3B5998;
+               color: white;
+               margin-top: 30px;
+         }
+
+         .fa-whatsapp{
+               background: #25d366;
+               color: white;
+         }
+
+         .fa-twitter{
+               background: #55ACEE;
+               color: white;
+         }
+
+         .fa-instagram{
+               background: #125688;
+               color: white;
+         }
+
+     </style>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script> -->
-    
+
   </head>
   <body>
-    <nav class="navbar navbar-inverse navbar-static-top">
+    <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
 
         <ul class="nav navbar-nav">
@@ -29,6 +85,7 @@
 
         <ul class="nav navbar-nav navbar-right">
               <li><a class="navbar-link" href="#"> {{user}} <span class="glyphicon glyphicon-user"></span></a></li>
+              <img class="rounded-circle article-img" src="{{user.profile.profile_pic.url}}" width='240' alt={{user}}>
               <li><a class="navbar-link" href="{% url 'logout' %}">Logout</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -48,6 +105,24 @@
       {% block body_block %}
       {% endblock %}
 
-    </div>
+
+
+    <footer>
+      <p>
+        <a id="ftr" href="#" class="fa fa-facebook"></a>
+        <a id="ftr" href="#" class="fa fa-whatsapp"></a>
+        <a id="ftr" href="#" class="fa fa-instagram"></a>
+        <a id="ftr" href="#" class="fa fa-twitter"></a>
+      </p>
+      <br>
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div style="color:#ffffff;" class="wow fadeInUp footer-copyright">
+              <p>Made in India <br>Copyright &copy; 2020 HACKEREARTH </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

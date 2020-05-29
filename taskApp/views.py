@@ -53,7 +53,6 @@ def add_task(request):
 
     if request.method == "POST":
         task_form=UserTaskForm(data=request.POST)
-
         if task_form.is_valid():
             task=task_form.save(commit=False)
             #print("NAME:"+str(request.user))

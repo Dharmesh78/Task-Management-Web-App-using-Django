@@ -1,5 +1,8 @@
 from django.urls import path
 from taskApp import views
+from django.conf import settings # new
+
+from django.conf.urls.static import static
 
 #TEMPLATE URLs
 app_name='taskApp'

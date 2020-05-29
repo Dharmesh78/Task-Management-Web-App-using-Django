@@ -23,7 +23,11 @@ body{
 th,h1,h2,h3,h4{
   text-align: center;
 }
-form {
+p{
+      text-align: center;
+
+}
+form{
     width: 300px;
     margin: 0 auto;
 }
