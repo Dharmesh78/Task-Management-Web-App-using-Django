@@ -9,11 +9,17 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
 
     <link rel="stylesheet" href="{% static 'css/mystyle.css' %}" >
     <style media="screen">
+            .avatar {
+            vertical-align: middle;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
          p{
            text-align: center;
            color: black;
@@ -63,8 +69,7 @@
          }
 
      </style>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script> -->
-
+    
   </head>
   <body>
     <nav class="navbar navbar-default navbar-static-top">
@@ -84,8 +89,12 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-              <li><a class="navbar-link" href="#"> {{user}} <span class="glyphicon glyphicon-user"></span></a></li>
-              <img class="rounded-circle article-img" src="{{user.profile.profile_pic.url}}" width='240' alt={{user}}>
+              <li><a class="navbar-link" href="#"> {{user}} </a></li>
+              {% if user.usercustom.profile_pic.url %}
+                <li><img class="avatar" src="{{user.usercustom.profile_pic.url}}"  alt={{user}}></li>
+              {% else %}
+                <li><a class="navbar-link" href="#"><span class="glyphicon glyphicon-user"></span></a></li>
+              {% endif %}
               <li><a class="navbar-link" href="{% url 'logout' %}">Logout</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">

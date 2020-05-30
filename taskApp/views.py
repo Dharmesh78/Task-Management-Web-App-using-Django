@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponseRedirect,HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 def index(request):
@@ -99,9 +100,14 @@ def register(request):
 
             profile=profile_form.save(commit=False)
             profile.user=user
+            #
+            # if 'profile_pic' in request.FILES:
+            #     profile.profile_pic=request.FILES['profile_pic']
 
-            if 'profile_pic' in request.FILES:
-                profile.profile_pic=request.FILES['profile_pic']
+            image = request.FILES['profile_pic']
+            if image:
+                filename = FileSystemStorage().save('profile_pics/' + image.name, image)
+                profile.profile_pic = filename
 
             profile.save()
             registered=True
