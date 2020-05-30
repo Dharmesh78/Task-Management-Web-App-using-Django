@@ -70,7 +70,9 @@
 
 
   {% else %}
+      <br><br><br>
       <p>You have not added any tasks</p>
+      <br>
       <p>Make one now !!</p>
       <form action="{%  url 'taskApp:addTask' %}" method="post">
             {% csrf_token %}
