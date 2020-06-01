@@ -4,13 +4,21 @@
 <div class="jumbotron">
     <h3>Edit the task:</h3>
 
-    <form  enctype="multipart/form-data"  method="post">
-      {% csrf_token %}
-      {{ task_form.as_p }}
-      <!-- <input type="submit" name="" value="save"> -->
-      <button type="submit" value="save" class="btn btn-success">Save!!</button>
-    </form>
+    <div id="container">
+      <form  enctype="multipart/form-data"  method="post">
+        {% csrf_token %}
+        {{ task_form.as_p }}
+        <!-- <input type="submit" name="" value="save"> -->
+        <button type="submit" id="button1" value="save" class="btn btn-success">Save!!</button>
+      </form>
+      <br>
+      <form  action="{%  url 'taskApp:myTask' %}"  method="post">
+        {% csrf_token %}
+        <button type="submit" id="button2" value="cancel" class="btn btn-danger">Cancel</button>
+      </form>
 
+
+    </div>
 
 </div>
 {% endblock %}

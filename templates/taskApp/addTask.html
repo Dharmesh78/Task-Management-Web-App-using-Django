@@ -11,7 +11,12 @@
     <form  enctype="multipart/form-data"  method="post">
       {% csrf_token %}
       {{ task_form.as_p }}
-      <button type="submit" value="add" class="btn btn-success">ADD!!</button>
+      <button type="submit" value="add" id="button1" class="btn btn-success">ADD!!</button>
+    </form>
+    <br>
+    <form  action="{%  url 'taskApp:myTask' %}"  method="post">
+      {% csrf_token %}
+      <button type="submit" id="button2" value="cancel" class="btn btn-danger">Cancel</button>
     </form>
   {% endif %}
 
