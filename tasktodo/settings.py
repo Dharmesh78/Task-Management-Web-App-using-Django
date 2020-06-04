@@ -24,13 +24,13 @@ MEDIA_DIR=os.path.join(BASE_DIR,'media')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '8&6sn!-!!9cg4q33_idte&0k!4gl__n6_bi_6r*%b$uc9$%jni'
-
-# SECURITY WARNING: don't run with debug turned on in production!
+SESSION_COOKIE_AGE = 600
+# SECURITY WARNING: don't run with= 600 debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # Application definition
 
 INSTALLED_APPS = [

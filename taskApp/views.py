@@ -133,6 +133,7 @@ def user_login(request):
 
         if user:
             if user.is_active:
+                # request.session.set_expiry(120)
                 login(request,user)
                 return HttpResponseRedirect(reverse('taskApp:myTask')) #myTask is the name of url , go to urls.py
             else:
