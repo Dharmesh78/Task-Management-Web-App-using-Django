@@ -14,7 +14,7 @@ def index(request):
 
 @login_required
 def toggle(request):
-    task_obj=UserTask.objects.filter(author=request.user)
+    task_obj=UserTask.objects.filter(author=request.user).order_by('date')
     msg=False
     if(request.POST.get('status',False)==False):
         msg=True
@@ -26,7 +26,15 @@ def toggle(request):
         t.status = True
         t.save()
     return render(request,'taskApp/task.html',{'task_obj':task_obj,'msg':msg})
-
+#
+@login_required
+def delete_task(request,task_id):
+    item = UserTask.objects.get(pk=task_id)
+    deleted=False
+    item.delete()
+    deleted=True
+    task_obj=UserTask.objects.filter(author=request.user).order_by('date')
+    return render(request,'taskApp/task.html',{'task_obj':task_obj,'deleted':deleted})
 
 @login_required
 def edit(request,task_id):
@@ -38,7 +46,7 @@ def edit(request,task_id):
             edited=True
             task_form.save()
             print("SUCCESS")#messages.success(request, ('Item Has Been Edited!'))
-            task_obj=UserTask.objects.filter(author=request.user)
+            task_obj=UserTask.objects.filter(author=request.user).order_by('date')
             return render(request,'taskApp/task.html',{'task_obj':task_obj,'edited':edited})
         else:
             print(task_form.errors)
@@ -60,7 +68,7 @@ def add_task(request):
             task.author=request.user
             task.save()
             added=True
-            task_obj=UserTask.objects.filter(author=request.user)
+            task_obj=UserTask.objects.filter(author=request.user).order_by('date')
             return render(request,'taskApp/task.html',{'task_obj':task_obj,'added':added})
 
         else:
@@ -74,7 +82,7 @@ def add_task(request):
 
 @login_required
 def my_task(request):
-    task_obj=UserTask.objects.filter(author=request.user)
+    task_obj=UserTask.objects.filter(author=request.user).order_by('date')
     return render(request,'taskApp/task.html',{'task_obj':task_obj,'user_key':request.user})
 
 
@@ -104,10 +112,12 @@ def register(request):
             # if 'profile_pic' in request.FILES:
             #     profile.profile_pic=request.FILES['profile_pic']
 
-            image = request.FILES['profile_pic']
-            if image:
-                filename = FileSystemStorage().save('profile_pics/' + image.name, image)
-                profile.profile_pic = filename
+            if 'profile_pic' in request.FILES:
+                image = request.FILES['profile_pic']
+                print("----------"+image+"--------")
+                if image:
+                    filename = FileSystemStorage().save('profile_pics/' + image.name, image)
+                    profile.profile_pic = filename
 
             profile.save()
             registered=True

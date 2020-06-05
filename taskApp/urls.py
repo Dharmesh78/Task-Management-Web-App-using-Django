@@ -13,4 +13,5 @@ urlpatterns=[
     path('myTasks/',views.my_task,name='myTask'),
     path('toggle/', views.toggle,name='toggle'),
     path('editTask/<task_id>',views.edit,name='edit'),
+    path('deleteTask/<task_id>',views.delete_task,name='delete'),
 ]

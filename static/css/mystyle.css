@@ -9,6 +9,7 @@ a:visited {
   text-decoration: none;
 }
 body{
+     /* background: url("/static/images/bgimg.png") 50% 0 no-repeat fixed; */
      background: url("/static/images/bgimg.png") 50% 0 no-repeat fixed;
      color: black;
      height: 650px;

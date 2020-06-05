@@ -7,16 +7,20 @@
   <br>
   <h3>To Do gives you focus, from work to play.</h3>
   <br>
+
+  <br>
+  <br>
+  {% if request.user.is_active %}
+
+  {% else %}
   <h4>Sign up today to start managing your tasks!!</h4>
-  <br>
-  <br>
   <form action="{%  url 'taskApp:register' %}" method="post">
         {% csrf_token %}
         <div class="text-center">
           <button type="submit" align="center" class="btn btn-success">Get Started!!</button>
         </div>
   </form>
-
+  {% endif %}
 </div>
 
 {% endblock %}

@@ -43,6 +43,7 @@
                       <button type="submit" value="Mark as complete" class="btn btn-success">Mark as complete!!</button>
                       <!-- <input type="submit"  value="Mark as complete"> -->
                     </form></td>
+                <td><a href="{% url 'taskApp:delete' t.id %}"<i class="fa fa-trash"></i></a></td>
             </tr>
             {% endif %}
 
