@@ -114,7 +114,6 @@ def register(request):
 
             if 'profile_pic' in request.FILES:
                 image = request.FILES['profile_pic']
-                print("----------"+image+"--------")
                 if image:
                     filename = FileSystemStorage().save('profile_pics/' + image.name, image)
                     profile.profile_pic = filename
